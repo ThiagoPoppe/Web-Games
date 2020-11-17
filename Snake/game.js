@@ -57,9 +57,10 @@ class Game {
     
     show() {
         scale(this.res);
+        stroke(51);
+        strokeWeight(0.1);
 
         // Drawing food
-        noStroke();
         fill(255, 0, 0);
         rect(this.food.x, this.food.y, 1, 1);
         

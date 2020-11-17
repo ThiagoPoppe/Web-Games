@@ -8,8 +8,10 @@ class Snake {
     }
 
     changeDir(xdir, ydir) {
-        this.xdir = xdir;
-        this.ydir = ydir;
+        if (this.xdir != xdir * -1) // not allowing backward moves
+            this.xdir = xdir;
+        if (this.ydir != ydir * -1) // not allowing backward moves
+            this.ydir = ydir;
     }
 
     eat(food) {
@@ -31,9 +33,12 @@ class Snake {
     }
 
     show() {
-        noStroke();
         fill(255);
-        for (var i = 0; i < this.body.length; i++)
+        for (var i = 0; i < this.body.length-1; i++)
             rect(this.body[i].x, this.body[i].y, 1, 1);
+
+        let head = this.body[this.body.length-1];
+        fill(0, 255, 0);
+        rect(head.x, head.y, 1, 1);
     }
 }
